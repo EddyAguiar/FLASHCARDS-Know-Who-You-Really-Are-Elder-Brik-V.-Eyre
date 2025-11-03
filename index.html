@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcards — Know Who You Really Are</title>
+  <style>
+    :root {
+      --intro: #4285F4;
+      --doctrinal: #34A853;
+      --application: #9C27B0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      padding: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #2d3748;
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 10px;
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+
+    .category-btn {
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .category-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .intro-btn { background-color: var(--intro); color: white; }
+    .doctrinal-btn { background-color: var(--doctrinal); color: white; }
+    .application-btn { background-color: var(--application); color: white; }
+
+    .flashcards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .flashcard {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-left: 5px solid;
+    }
+
+    .flashcard:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .intro { border-color: var(--intro); }
+    .doctrinal { border-color: var(--doctrinal); }
+    .application { border-color: var(--application); }
+
+    .flashcard-header {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .flashcard-header .emoji {
+      margin-right: 10px;
+      font-size: 1.5rem;
+    }
+
+    .content { display: none; }
+    .content.active { display: block; animation: fadeIn 0.5s; }
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+
+    .summary { background: #f8fafc; padding: 12px; border-radius: 8px; margin-bottom: 10px; }
+    .speech-text { background: #ebf8ff; padding: 12px; border-radius: 8px; border-left: 3px solid #4299e1; }
+  </style>
+</head>
+<body>
+  <h1>📖 Flashcards — "Know Who You Really Are" (Elder Brik V. Eyre)</h1>
+
+  <div class="categories">
+    <button class="category-btn intro-btn" onclick="filterCards('intro')">Introduction & Core Message</button>
+    <button class="category-btn doctrinal-btn" onclick="filterCards('doctrinal')">Doctrinal Insights</button>
+    <button class="category-btn application-btn" onclick="filterCards('application')">Personal Application</button>
+    <button class="category-btn" onclick="filterCards('all')" style="background:#2d3748;color:white;">Show All</button>
+  </div>
+
+  <div class="flashcards-container">
+    <!-- INTRODUCTION -->
+    <div class="flashcard intro" onclick="revealContent(this)">
+      <div class="flashcard-header"><span class="emoji">🎴</span> Cue Card 1 — Introduction</div>
+      <div class="content">
+        <div class="summary"><strong>Key message:</strong> Our lives will change if we truly understand who we are—children of God.</div>
+        <div class="speech-text">Regardless of where we are on our path of discipleship, our lives will fundamentally change if we better understand who we really are.</div>
+      </div>
+    </div>
+
+    <div class="flashcard intro" onclick="revealContent(this)">
+      <div class="flashcard-header"><span class="emoji">🎴</span> Cue Card 2 — Daughter’s Mission Story</div>
+      <div class="content">
+        <div class="summary">A missionary experience shows compassion first, doctrine next.</div>
+        <div class="speech-text">Several years ago our daughter had a profound experience on her mission... [full story text here including her comforting the woman and learning divine worth].</div>
+      </div>
+    </div>
+
+    <!-- DOCTRINAL INSIGHTS -->
+    <div class="flashcard doctrinal" onclick="revealContent(this)">
+      <div class="flashcard-header"><span class="emoji">📘</span> Cue Card 3 — Foundational Doctrine</div>
+      <div class="content">
+        <div class="summary">Missionaries start with God is our loving Father; all truth builds on that foundation.</div>
+        <div class="speech-text">It is insightful that the first point of doctrine that our missionaries teach is that God is our loving Heavenly Father... [full Susan H. Porter quote].</div>
+      </div>
+    </div>
+
+    <div class="flashcard doctrinal" onclick="revealContent(this)">
+      <div class="flashcard-header"><span class="emoji">📘</span> Cue Card 4 — The Example of Moses</div>
+      <div class="content">
+        <div class="summary">Moses learned he was a son of God. Satan tried to label him otherwise. Seek validation vertically, not horizontally.</div>
+        <div class="speech-text">This change is illustrated as we read about the experience Moses had when talking with God face-to-face... [full Moses narrative].</div>
+      </div>
+    </div>
+
+    <div class="flashcard doctrinal" onclick="revealContent(this)">
+      <div class="flashcard-header"><span class="emoji">📘</span> Cue Card 5 — President Nelson’s Teaching</div>
+      <div class="content">
+        <div class="summary">President Nelson: You are a child of God, a child of the covenant, and a disciple of Christ.</div>
+        <div class="speech-text">In a worldwide devotional for young adults, our beloved President Russell M. Nelson taught... [full quote].</div>
+      </div>
+    </div>
+
+    <div class="flashcard doctrinal" onclick="revealContent(this)">
+      <div class="flashcard-header"><span class="emoji">📘</span> Cue Card 6 — God’s Plan and Love</div>
+      <div class="content">
+        <div class="summary">Elder Patrick Kearon taught God is in relentless pursuit of you. His plan is to bring you home.</div>
+        <div class="speech-text">As we come to truly know who we are, we will believe more strongly that our loving Heavenly Father has provided a plan for us... [full Patrick Kearon citation].</div>
+      </div>
+    </div>
+
+    <!-- APPLICATION -->
+    <div class="flashcard application" onclick="revealContent(this)">
+      <div class="flashcard-header"><span class="emoji">💜</span> Cue Card 7 — First: Prayer</div>
+      <div class="content">
+        <div class="summary">Shift from saying prayers to being with God; prepare spiritually before praying.</div>
+        <div class="speech-text">As the Savior was beginning His mortal ministry, He was led into the wilderness to be with God... [full prayer section].</div>
+      </div>
+    </div>
+
+    <div class="flashcard application" onclick="revealContent(this)">
+      <div class="flashcard-header"><span class="emoji">💜</span> Cue Card 8 — Deepening Prayer</div>
+      <div class="content">
+        <div class="summary">Find quiet places, express gratitude, speak sincerely, and know God wants to hear you.</div>
+        <div class="speech-text">Whether it is in a closet or a bedroom, the principle is to find a place where you can be alone to pray... [full Elder Holland quote and reflection].</div>
+      </div>
+    </div>
+
+    <div class="flashcard application" onclick="revealContent(this)">
+      <div class="flashcard-header"><span class="emoji">💜</span> Cue Card 9 — Second: Know Jesus Is the Christ</div>
+      <div class="content">
+        <div class="summary">The greatest manifestation of God’s love is sending His Son. Jesus is mighty to save.</div>
+        <div class="speech-text">The greatest manifestation of Heavenly Father’s love for us as His children is the reality that He sent His Son... [full story of temple recommendation and forgiveness].</div>
+      </div>
+    </div>
+
+    <div class="flashcard application" onclick="revealContent(this)">
+      <div class="flashcard-header"><span class="emoji">💜</span> Cue Card 10 — Jesus Is Our Personal Savior</div>
+      <div class="content">
+        <div class="summary">Christ’s Atonement is personal. He is my Savior and your Savior. Each of us is worth saving.</div>
+        <div class="speech-text">In 2019 there was a profound change in the temple recommend questions... [full passage about personal testimony of Christ].</div>
+      </div>
+    </div>
+
+    <div class="flashcard application" onclick="revealContent(this)">
+      <div class="flashcard-header"><span class="emoji">💜</span> Cue Card 11 — Closing Testimony</div>
+      <div class="content">
+        <div class="summary">We have a loving Father in Heaven. Through prayer and Christ, we can proclaim: “I am a child of God.”</div>
+        <div class="speech-text">I testify that we have a loving Heavenly Father... In the name of Jesus Christ, amen.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function revealContent(card) {
+      const content = card.querySelector('.content');
+      content.classList.toggle('active');
+    }
+
+    function filterCards(category) {
+      const cards = document.querySelectorAll('.flashcard');
+      cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
